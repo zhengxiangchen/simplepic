@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug">
+  <Appenders>
+    <Console name="console" target="SYSTEM_OUT">
+      <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}][%p][%class.%method() %L] : %m%n"/>
+    </Console>
+    <RollingFile name="logfile" fileName="E://jar-logs/app.log" filePattern="E://jar-logs/%d{yyyy-MM-dd-HH}.log">
+    	<PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}][%p][%class.%method() %L] : %m%n"/>
+      	<Policies>  
+        	<TimeBasedTriggeringPolicy interval="1" modulate="true"/> 
+        </Policies> 
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <!-- <AppenderRef ref="database"/> -->
+      <AppenderRef ref="console"/>
+      <AppenderRef ref="logfile"/>
+    </Root>
+    <logger name="com.gargoylesoftware.htmlunit" level="fatal" additivity="false"/>
+  </Loggers>
+</Configuration>

@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Wed Mar 07 09:59:30 CST 2018
+onejar.license.required=false
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=true
+jarname=simplepic.jar
+manifest.mergeall=true
+manifest.mainclass=cn.gzitrans.soft.SimplepicApplication
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=
