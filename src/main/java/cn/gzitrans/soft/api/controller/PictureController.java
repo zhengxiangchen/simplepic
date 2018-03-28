@@ -1,5 +1,6 @@
 package cn.gzitrans.soft.api.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -130,6 +131,9 @@ public class PictureController {
         String ret = HttpAccess.postNameValuePairRequest(url, map, "utf-8", "wx");
         
         String simplePicPath = base64ToImage(ret);
+        if(simplePicPath == null || simplePicPath.length() <= 0){
+        	return "error";
+        }
         
         String simplifyFilePath = simplePicPath.split(";")[0];
         String simplifyFileName = simplePicPath.split(";")[1];
@@ -164,13 +168,20 @@ public class PictureController {
 		  //生成jpeg图片
 		  String simplifyFileName = "simplify" + Math.random()*1000 + ".jpg";
 		  String absPath = simplifyFilePath + simplifyFileName;
+		  
+		  File targetFile = new File(simplifyFilePath);  
+		  if(!targetFile.exists()){    
+            targetFile.mkdirs();    
+		  }
+		  
 	      OutputStream out = new FileOutputStream(absPath);   
 	      out.write(b); 
 	      out.flush(); 
 	      out.close();
-	      return simplifyFilePath + ";" + simplifyFileName; 
+	      return simplifyFilePath + ";" + simplifyFileName;
 	    }catch (Exception e) {
-	      return ""; 
+	      logger.error(e.getMessage());
+	      return null; 
 	    } 
 	}
 	
@@ -189,7 +200,7 @@ public class PictureController {
 	    }  
 	    catch (IOException e)  
 	    { 
-	      e.printStackTrace(); 
+	    	logger.error(e.getMessage());
 	    } 
 	    //对字节数组Base64编码 
 	    BASE64Encoder encoder = new BASE64Encoder(); 
