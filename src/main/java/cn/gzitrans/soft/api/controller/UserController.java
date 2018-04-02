@@ -98,5 +98,17 @@ public class UserController {
 		}
 		
 	}
+	
+	
+	
+	/**
+	 * 测试接口
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(HttpServletRequest request){
+		return "success";
+	}
 
 }
