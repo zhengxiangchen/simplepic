@@ -4,7 +4,7 @@
     <Console name="console" target="SYSTEM_OUT">
       <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}][%p][%class.%method() %L] : %m%n"/>
     </Console>
-    <RollingFile name="logfile" fileName="E://jar-logs/app.log" filePattern="E://jar-logs/%d{yyyy-MM-dd-HH}.log">
+    <RollingFile name="logfile" fileName="D://simplepic_img/jar-logs/app.log" filePattern="D://simplepic_img/jar-logs/%d{yyyy-MM-dd-HH}.log">
     	<PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}][%p][%class.%method() %L] : %m%n"/>
       	<Policies>  
         	<TimeBasedTriggeringPolicy interval="1" modulate="true"/> 
