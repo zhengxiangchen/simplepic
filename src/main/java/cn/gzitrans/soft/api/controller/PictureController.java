@@ -124,8 +124,8 @@ public class PictureController {
         
         String picture64 = imageToBase64(filePath + fileName);
         
-        String url = "http://125.216.231.231:8081/api_v1/lab/picture/receive";
-        //String url = "http://127.0.0.1:8081/api_v1/lab/picture/receive";
+        //String url = "http://125.216.231.231:8081/api_v1/lab/picture/receive";
+        String url = "http://127.0.0.1:8082/api_v1/lab/picture/receive";
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("picture64", picture64);
         

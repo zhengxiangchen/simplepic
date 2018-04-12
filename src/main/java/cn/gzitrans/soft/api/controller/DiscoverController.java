@@ -133,6 +133,7 @@ public class DiscoverController {
 		PictureUploadLogsEntity picLogs = pictureUploadLogsService.findOne(pictureUploadLogsId);
 		DiscoverInfoEntity discoverInfo = new DiscoverInfoEntity();
 		discoverInfo.setId(picLogs.getId());
+		discoverInfo.setOpenId(picLogs.getOpenId());
 		discoverInfo.setPictureUrl(staticPath + picLogs.getUploadPictureUrl());
 		discoverInfo.setSimplifyPictureUrl(staticPath + picLogs.getSimplifyPictureUrl());
 		discoverInfo.setUploadTime(format.format(picLogs.getUploadTime()));

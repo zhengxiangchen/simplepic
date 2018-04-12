@@ -6,6 +6,8 @@ public class DiscoverInfoEntity {
 	
 	private Long id;
 	
+	private String openId;//上传者openid
+	
 	private String pictureUrl;//原图地址
 	
 	private String simplifyPictureUrl;//简化图地址
@@ -28,6 +30,14 @@ public class DiscoverInfoEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getOpenId() {
+		return openId;
+	}
+
+	public void setOpenId(String openId) {
+		this.openId = openId;
 	}
 
 	public String getPictureUrl() {
