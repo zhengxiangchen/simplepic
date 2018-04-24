@@ -9,6 +9,10 @@ public class DiscoverEntity {
 	private String nickName;
 	
 	private String uploadTime;
+	
+	private String likeNumber;
+	
+	private String shareNumber;
 
 	public Long getId() {
 		return id;
@@ -42,6 +46,22 @@ public class DiscoverEntity {
 		this.uploadTime = uploadTime;
 	}
 	
+	public String getLikeNumber() {
+		return likeNumber;
+	}
+
+	public void setLikeNumber(String likeNumber) {
+		this.likeNumber = likeNumber;
+	}
+
+	public String getShareNumber() {
+		return shareNumber;
+	}
+
+	public void setShareNumber(String shareNumber) {
+		this.shareNumber = shareNumber;
+	}
+
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
 		sb.append("[id] = ");
@@ -52,6 +72,10 @@ public class DiscoverEntity {
 		sb.append(nickName);
 		sb.append(",[uploadTime] = ");
 		sb.append(uploadTime);
+		sb.append(",[likeNumber] = ");
+		sb.append(likeNumber);
+		sb.append(",[shareNumber] = ");
+		sb.append(shareNumber);
 		return sb.toString();
 	}
 

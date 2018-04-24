@@ -78,6 +78,8 @@ public class DiscoverController {
 			discover.setId(entity.getId());
 			discover.setPictureUrl(staticPath + entity.getThumbnailPictureUrl());
 			discover.setUploadTime(format.format(entity.getUploadTime()));
+			discover.setLikeNumber(String.valueOf(entity.getLikeNumber()));
+			discover.setShareNumber(String.valueOf(entity.getShareNumber()));
 			String openid = entity.getOpenId();
 			UserEntity user = userService.findUserByOpenId(openid);
 			discover.setNickName(user.getNickName());
@@ -110,6 +112,8 @@ public class DiscoverController {
 				discover.setId(entity.getId());
 				discover.setPictureUrl(staticPath + entity.getThumbnailPictureUrl());
 				discover.setUploadTime(format.format(entity.getUploadTime()));
+				discover.setLikeNumber(String.valueOf(entity.getLikeNumber()));
+				discover.setShareNumber(String.valueOf(entity.getShareNumber()));
 				String openid = entity.getOpenId();
 				UserEntity user = userService.findUserByOpenId(openid);
 				discover.setNickName(user.getNickName());
