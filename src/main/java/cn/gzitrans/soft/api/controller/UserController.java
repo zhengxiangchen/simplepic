@@ -1,10 +1,9 @@
 package cn.gzitrans.soft.api.controller;
 
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.util.HashMap;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import cn.gzitrans.soft.api.entity.UserEntity;
 import cn.gzitrans.soft.api.entity.UserLoginLogsEntity;
 import cn.gzitrans.soft.api.service.UserLoginLogsService;
 import cn.gzitrans.soft.api.service.UserService;
+import cn.gzitrans.soft.api.utils.EmojiFilter;
 import cn.gzitrans.soft.api.utils.HttpAccess;
 
 
@@ -80,6 +80,7 @@ public class UserController {
 	public void login(HttpServletRequest request, @RequestParam String userString){
 		//将下程序传过来的json串转为对象
 		UserEntity user = JSON.parseObject(userString, UserEntity.class);
+		user.setNickName(EmojiFilter.filterEmoji(user.getNickName()));
 		String openid = user.getOpenId();
 		UserEntity checkUser = userService.findUserByOpenId(openid);
 		

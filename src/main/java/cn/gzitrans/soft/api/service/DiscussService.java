@@ -13,7 +13,6 @@ public class DiscussService {
 	
 	@Autowired
 	private DiscussDao discussDao;
-
 	
 	/**
 	 * 根据图片上传记录id获取该记录的所有评论

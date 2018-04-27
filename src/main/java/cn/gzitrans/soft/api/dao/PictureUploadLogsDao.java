@@ -9,12 +9,12 @@ import cn.gzitrans.soft.api.entity.PictureUploadLogsEntity;
 
 public interface PictureUploadLogsDao extends CrudRepository<PictureUploadLogsEntity, Long> {
 
-	@Query(value = "select * from picture_upload_logs order by id desc limit ?", nativeQuery=true)
+	@Query(value = "select * from picture_upload_logs where is_delete = 0 order by id desc limit ?", nativeQuery=true)
 	ArrayList<PictureUploadLogsEntity> getPictureUploadLogsList(int discover_index_count);
 
 	
 	
-	@Query(value = "select * from picture_upload_logs where id <=? order by id desc limit ?", nativeQuery=true)
+	@Query(value = "select * from picture_upload_logs where is_delete = 0 and id <=? order by id desc limit ?", nativeQuery=true)
 	ArrayList<PictureUploadLogsEntity> getMoreLogsList(int beginId, int discover_more_count);
 
 
@@ -26,7 +26,7 @@ public interface PictureUploadLogsDao extends CrudRepository<PictureUploadLogsEn
 
 
 	
-	@Query("from PictureUploadLogsEntity where openId =? order by id desc")
+	@Query("from PictureUploadLogsEntity where is_delete = 0 and openId = ? order by id desc")
 	ArrayList<PictureUploadLogsEntity> getMyUploadLogsList(String openId);
 
 
@@ -34,5 +34,11 @@ public interface PictureUploadLogsDao extends CrudRepository<PictureUploadLogsEn
 	@Transactional
 	@Query("update PictureUploadLogsEntity set shareNumber = ? where id = ?")
 	void updateShareNumber(Integer afterNumber, Long valueOf);
+
+
+	@Modifying
+	@Transactional
+	@Query("update PictureUploadLogsEntity set isDelete = ? where id = ?")
+	void updateIsDelete(Integer i, Long pictureUploadLogsId);
 
 }

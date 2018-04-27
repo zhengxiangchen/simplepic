@@ -38,6 +38,9 @@ public class PictureUploadLogsEntity {
 	
 	@Column(name = "share_number")
 	private Integer shareNumber;
+	
+	@Column(name = "is_delete")
+	private Integer isDelete;//是否删除的标记0正常,1已删除
 
 	public Long getId() {
 		return id;
@@ -103,6 +106,14 @@ public class PictureUploadLogsEntity {
 		this.shareNumber = shareNumber;
 	}
 	
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
+	}
+
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
 		sb.append("[id] = ");
@@ -121,6 +132,14 @@ public class PictureUploadLogsEntity {
 		sb.append(likeNumber);
 		sb.append(",[shareNumber] = ");
 		sb.append(shareNumber);
+		sb.append(",[isDelete] = ");
+		if(isDelete == 0){
+			sb.append("正常");
+		}else if(isDelete == 1){
+			sb.append("已删除");
+		}else{
+			sb.append(isDelete);
+		}
 		return sb.toString();
 	}
 	

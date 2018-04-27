@@ -23,6 +23,8 @@ public class DiscoverInfoEntity {
 	private Integer shareNumber;
 	
 	private ArrayList<DiscussInfoEntity> discussInfo;
+	
+	private Integer isDelete;//是否删除标记0正常,1已删除
 
 	public Long getId() {
 		return id;
@@ -104,6 +106,14 @@ public class DiscoverInfoEntity {
 		this.shareNumber = shareNumber;
 	}
 	
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
+	}
+
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
 		sb.append("[id] = ");
@@ -124,6 +134,14 @@ public class DiscoverInfoEntity {
 		sb.append(shareNumber);
 		sb.append(",[discussInfo] = ");
 		sb.append(discussInfo);
+		sb.append(",[isDelete] = ");
+		if(isDelete == 0){
+			sb.append("正常");
+		}else if(isDelete == 1){
+			sb.append("已删除");
+		}else{
+			sb.append(isDelete);
+		}
 		return sb.toString();
 	}
 	

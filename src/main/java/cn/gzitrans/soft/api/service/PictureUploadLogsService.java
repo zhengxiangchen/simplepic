@@ -88,4 +88,14 @@ public class PictureUploadLogsService {
 		pictureUploadLogsDao.updateShareNumber(afterNumber, Long.valueOf(pictureUploadLogsId));
 	}
 
+
+	/**
+	 * 修改删除上传记录标记
+	 * @param i
+	 * @param pictureUploadLogsId
+	 */
+	public void updateIsDelete(Integer i, Integer pictureUploadLogsId) {
+		pictureUploadLogsDao.updateIsDelete(i,Long.valueOf(pictureUploadLogsId));
+	}
+
 }

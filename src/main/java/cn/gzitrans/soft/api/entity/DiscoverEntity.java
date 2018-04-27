@@ -13,6 +13,8 @@ public class DiscoverEntity {
 	private String likeNumber;
 	
 	private String shareNumber;
+	
+	private String avatarUrl;
 
 	public Long getId() {
 		return id;
@@ -60,6 +62,14 @@ public class DiscoverEntity {
 
 	public void setShareNumber(String shareNumber) {
 		this.shareNumber = shareNumber;
+	}
+	
+	public String getAvatarUrl() {
+		return avatarUrl;
+	}
+
+	public void setAvatarUrl(String avatarUrl) {
+		this.avatarUrl = avatarUrl;
 	}
 
 	public String toString(){

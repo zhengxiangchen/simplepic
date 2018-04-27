@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,6 +68,7 @@ public class DiscoverController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getDiscoverList", method = RequestMethod.GET)
+	//@Cacheable(value="discoverList")
 	public ArrayList<DiscoverEntity> getDiscoverList(HttpServletRequest request){
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		DiscoverEntity discover;
@@ -83,6 +85,7 @@ public class DiscoverController {
 			String openid = entity.getOpenId();
 			UserEntity user = userService.findUserByOpenId(openid);
 			discover.setNickName(user.getNickName());
+			discover.setAvatarUrl(user.getAvatarUrl());
 			returnList.add(discover);
 		}
 		return returnList;
@@ -117,6 +120,7 @@ public class DiscoverController {
 				String openid = entity.getOpenId();
 				UserEntity user = userService.findUserByOpenId(openid);
 				discover.setNickName(user.getNickName());
+				discover.setAvatarUrl(user.getAvatarUrl());
 				returnList.add(discover);
 			}
 		}
@@ -143,6 +147,7 @@ public class DiscoverController {
 		discoverInfo.setUploadTime(format.format(picLogs.getUploadTime()));
 		discoverInfo.setLikeNumber(picLogs.getLikeNumber());
 		discoverInfo.setShareNumber(picLogs.getShareNumber());
+		discoverInfo.setIsDelete(picLogs.getIsDelete());
 		
 		UserEntity user = userService.findUserByOpenId(picLogs.getOpenId());
 		discoverInfo.setNickName(user.getNickName());

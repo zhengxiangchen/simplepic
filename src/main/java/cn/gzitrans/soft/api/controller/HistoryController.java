@@ -2,7 +2,6 @@ package cn.gzitrans.soft.api.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
@@ -64,6 +63,19 @@ public class HistoryController {
 			returnList.add(discover);
 		}
 		return returnList;
+	}
+	
+	
+	/**
+	 * 删除上传记录
+	 * @param request
+	 * @param pictureUploadLogsId
+	 */
+	@RequestMapping(value = "/deleteOneHistory", method = RequestMethod.GET)
+	public void deleteOneHistory(HttpServletRequest request, @RequestParam Integer pictureUploadLogsId){
+		PictureUploadLogsEntity pictureUploadLogs = pictureUploadLogsService.findOne(pictureUploadLogsId);
+		pictureUploadLogs.setIsDelete(1);
+		pictureUploadLogsService.updateIsDelete(1,pictureUploadLogsId);
 	}
 
 }

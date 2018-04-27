@@ -147,6 +147,7 @@ public class PictureController {
         picUploadLog.setUploadTime(new Timestamp(System.currentTimeMillis()));
         picUploadLog.setLikeNumber(0);
         picUploadLog.setShareNumber(0);
+        picUploadLog.setIsDelete(0);
         pictureUploadLogsService.save(picUploadLog);
 		return staticPath + simplifyFileName;
 	}
