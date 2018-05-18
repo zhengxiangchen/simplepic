@@ -122,6 +122,9 @@ public class PictureController {
         } catch (Exception e) {
         }
         
+        logger.info("小程序openid = " + openid + " ,的用户上传了一张图片.");
+        logger.info("图片名称 = " + fileName);
+        
         String picture64 = imageToBase64(filePath + fileName);
         
         //String url = "http://222.201.144.224:8081/api_v1/lab/picture/receive";
